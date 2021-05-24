@@ -139,7 +139,7 @@ fn main() {
                 print!(" ({} items depub'ed)", num_changed);
                 changed = true;
             }
-            println!("");
+            println!();
         }
         if !changed {
             break;
