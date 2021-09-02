@@ -64,7 +64,7 @@ fn process(oracle_cmd: &str, p: &Path) -> u64 {
                 PubKind::Private => "",
                 _ => unreachable!(),
             };
-            try_txt.push_str(&pub_txt);
+            try_txt.push_str(pub_txt);
             try_txt.push_str(&cur_txt[m.end()..]);
             write(p, &try_txt).unwrap();
             match Command::new("sh")
@@ -134,7 +134,7 @@ fn main() {
         for p in &matches.free {
             print!("{}: ", p);
             stdout().flush().ok();
-            let num_changed = process(oracle_cmd.as_str(), &Path::new(&p));
+            let num_changed = process(oracle_cmd.as_str(), Path::new(&p));
             if num_changed > 0 {
                 print!(" ({} items depub'ed)", num_changed);
                 changed = true;
