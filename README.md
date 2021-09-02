@@ -56,7 +56,7 @@ $ find . -name "*.rs" | \
 `depub` informs you of its progress. After it is finished, `diff` your code
 base, and accept those of its recommendations you think appropriate. Note that
 `depub` currently uses string search and replace, so it will merrily change the
-string `pub` in a command into `pub(crate)` -- you should not expect to accept
+string `pub` in a comment into `pub(crate)` -- you should not expect to accept
 its recommendations without at least a cursory check.
 
 
