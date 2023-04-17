@@ -109,10 +109,7 @@ fn progname() -> String {
 
 /// Print out program usage then exit. This function must not be called after daemonisation.
 fn usage() -> ! {
-    eprintln!(
-        "Usage: {} -c <command> file_1 [... file_n]",
-        progname = progname()
-    );
+    eprintln!("Usage: {} -c <command> file_1 [... file_n]", progname());
     process::exit(1)
 }
 
