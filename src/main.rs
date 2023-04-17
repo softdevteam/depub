@@ -81,7 +81,16 @@ fn process(oracle_cmd: &str, p: &Path) -> u64 {
                     }
                     next_txt = try_txt;
                 }
-                _ => break,
+                _ => {
+                    if let PubKind::Super = next_kind {
+                        // If we're depubing a root module, then `super` is invalid, causing
+                        // the following (not entirely intuitive) error:
+                        //   there are too many leading `super` keywords
+                        // We still want to try Private visibility in such cases.
+                    } else {
+                        break;
+                    }
+                }
             }
             kind = next_kind;
         }
