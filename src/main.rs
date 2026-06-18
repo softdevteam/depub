@@ -45,8 +45,13 @@ fn process(oracle_cmd: &str, p: &Path) -> u64 {
                     continue;
                 }
             }
-        } else {
+        } else if m.end() + 1 < cur_txt.len()
+            && cur_txt[m.end()..].chars().next().map(|x| x.is_whitespace()) == Some(true)
+        {
             PubKind::Pub
+        } else {
+            i = m.end();
+            continue;
         };
         let mut next_txt = cur_txt.clone();
         let mut depubed = false;
